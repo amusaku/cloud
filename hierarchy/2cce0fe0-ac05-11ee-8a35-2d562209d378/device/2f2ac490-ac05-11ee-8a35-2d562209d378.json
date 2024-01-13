@@ -1,0 +1,122 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : null,
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "2cce0fe0-ac05-11ee-8a35-2d562209d378"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "2cc3d6b0-ac05-11ee-8a35-2d562209d378"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "2f2ac490-ac05-11ee-8a35-2d562209d378"
+    },
+    "label" : "Fruits",
+    "name" : "Smart Shelf 765765",
+    "ownerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "2cce0fe0-ac05-11ee-8a35-2d562209d378"
+    },
+    "softwareId" : null,
+    "type" : "Smart Shelf"
+  },
+  "credentials" : {
+    "credentialsId" : "0Y3wCN8sClj3X2R2GJW8",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "2d1440a0-ac05-11ee-8a35-2d562209d378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "2f2ac490-ac05-11ee-8a35-2d562209d378"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1704484880301,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityTimeout",
+      "lastUpdateTs" : 1704484880266,
+      "longValue" : 15768000000,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1704484880301,
+      "longValue" : 1704484880297,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lowWeightCriticalThreshold",
+      "lastUpdateTs" : 1704484876218,
+      "longValue" : 5,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lowWeightMajorThreshold",
+      "lastUpdateTs" : 1704484876218,
+      "longValue" : 15,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "state",
+      "lastUpdateTs" : 1704484887624,
+      "longValue" : null,
+      "strValue" : "normal"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 0.8554396146493717,
+      "jsonValue" : null,
+      "key" : "xPos",
+      "lastUpdateTs" : 1704484876218,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 0.2868097994555209,
+      "jsonValue" : null,
+      "key" : "yPos",
+      "lastUpdateTs" : 1704484876218,
+      "longValue" : null,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ ]
+  }
+}

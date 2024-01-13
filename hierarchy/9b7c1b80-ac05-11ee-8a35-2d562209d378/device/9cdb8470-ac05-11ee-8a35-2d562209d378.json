@@ -1,0 +1,130 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : null,
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "9b7c1b80-ac05-11ee-8a35-2d562209d378"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "9b5077a1-ac05-11ee-8a35-2d562209d378"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "9cdb8470-ac05-11ee-8a35-2d562209d378"
+    },
+    "label" : "Hall Gateway",
+    "name" : "D00000100010",
+    "ownerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "9b7c1b80-ac05-11ee-8a35-2d562209d378"
+    },
+    "softwareId" : null,
+    "type" : "AL_Gateway"
+  },
+  "credentials" : {
+    "credentialsId" : "7FK0aoneCwBMfcyaGezw",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "9bfac160-ac05-11ee-8a35-2d562209d378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "9cdb8470-ac05-11ee-8a35-2d562209d378"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1704485073400,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityTimeout",
+      "lastUpdateTs" : 1704485073361,
+      "longValue" : 15768000000,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1704485073400,
+      "longValue" : 1704485073385,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "room",
+      "lastUpdateTs" : 1704485060242,
+      "longValue" : null,
+      "strValue" : "Hall"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 0.6838,
+      "jsonValue" : null,
+      "key" : "roomXPos",
+      "lastUpdateTs" : 1704485060242,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 0.7419,
+      "jsonValue" : null,
+      "key" : "roomYPos",
+      "lastUpdateTs" : 1704485060242,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 0.7334,
+      "jsonValue" : null,
+      "key" : "xPos",
+      "lastUpdateTs" : 1704485060242,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 0.7419,
+      "jsonValue" : null,
+      "key" : "yPos",
+      "lastUpdateTs" : 1704485060242,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "zone",
+      "lastUpdateTs" : 1704485060242,
+      "longValue" : null,
+      "strValue" : "Floor 1"
+    } ],
+    "SHARED_SCOPE" : [ ]
+  }
+}

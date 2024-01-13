@@ -1,0 +1,723 @@
+{
+  "entityType" : "DEVICE_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "99ce9290-ac05-11ee-8a35-2d562209d378"
+    },
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "9882d8b0-ac05-11ee-8a35-2d562209d378"
+    },
+    "description" : "",
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "9b59c670-ac05-11ee-8a35-2d562209d378"
+    },
+    "image" : null,
+    "name" : "AL_RoomSensor",
+    "profileData" : {
+      "alarms" : [ {
+        "alarmType" : "Battery",
+        "clearRule" : {
+          "alarmDetails" : null,
+          "condition" : {
+            "condition" : [ {
+              "key" : {
+                "key" : "battery",
+                "type" : "TIME_SERIES"
+              },
+              "predicate" : {
+                "type" : "NUMERIC",
+                "operation" : "GREATER",
+                "value" : {
+                  "defaultValue" : 25.0,
+                  "dynamicValue" : {
+                    "inherit" : false,
+                    "sourceAttribute" : "minMajorBatteryLevelThreshold",
+                    "sourceType" : "CURRENT_CUSTOMER"
+                  },
+                  "userValue" : null
+                }
+              },
+              "value" : null,
+              "valueType" : "NUMERIC"
+            } ],
+            "spec" : {
+              "type" : "SIMPLE"
+            }
+          },
+          "dashboardId" : null,
+          "schedule" : null
+        },
+        "createRules" : {
+          "CRITICAL" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "batteryLevelAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              }, {
+                "key" : {
+                  "key" : "battery",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "NUMERIC",
+                  "operation" : "LESS_OR_EQUAL",
+                  "value" : {
+                    "defaultValue" : 15.0,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "minCriticalBatteryLevelThreshold",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          },
+          "MAJOR" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "batteryLevelAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              }, {
+                "key" : {
+                  "key" : "battery",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "NUMERIC",
+                  "operation" : "LESS_OR_EQUAL",
+                  "value" : {
+                    "defaultValue" : 25.0,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "minMajorBatteryLevelThreshold",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          }
+        },
+        "id" : "6ca2bf03-5fb1-6e4e-19d2-a736829226b6",
+        "propagate" : true,
+        "propagateRelationTypes" : [ "Contains" ],
+        "propagateToOwner" : false,
+        "propagateToOwnerHierarchy" : false,
+        "propagateToTenant" : false
+      }, {
+        "alarmType" : "Air Quality",
+        "clearRule" : {
+          "alarmDetails" : null,
+          "condition" : {
+            "condition" : [ {
+              "key" : {
+                "key" : "IAQ",
+                "type" : "TIME_SERIES"
+              },
+              "predicate" : {
+                "type" : "NUMERIC",
+                "operation" : "LESS",
+                "value" : {
+                  "defaultValue" : 150.0,
+                  "dynamicValue" : {
+                    "inherit" : false,
+                    "sourceAttribute" : "maxMajorRoomIaqThreshold",
+                    "sourceType" : "CURRENT_CUSTOMER"
+                  },
+                  "userValue" : null
+                }
+              },
+              "value" : null,
+              "valueType" : "NUMERIC"
+            } ],
+            "spec" : {
+              "type" : "SIMPLE"
+            }
+          },
+          "dashboardId" : null,
+          "schedule" : null
+        },
+        "createRules" : {
+          "CRITICAL" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "roomIaqAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              }, {
+                "key" : {
+                  "key" : "IAQ",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "NUMERIC",
+                  "operation" : "GREATER_OR_EQUAL",
+                  "value" : {
+                    "defaultValue" : 300.0,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "maxCriticalRoomIaqThreshold",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          },
+          "MAJOR" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "roomIaqAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              }, {
+                "key" : {
+                  "key" : "IAQ",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "NUMERIC",
+                  "operation" : "GREATER_OR_EQUAL",
+                  "value" : {
+                    "defaultValue" : 150.0,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "maxMajorRoomIaqThreshold",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          }
+        },
+        "id" : "407f000e-25b0-af44-d5d1-abc464dd6945",
+        "propagate" : true,
+        "propagateRelationTypes" : [ "Contains" ],
+        "propagateToOwner" : false,
+        "propagateToOwnerHierarchy" : false,
+        "propagateToTenant" : false
+      }, {
+        "alarmType" : "Temperature",
+        "clearRule" : {
+          "alarmDetails" : null,
+          "condition" : {
+            "condition" : [ {
+              "key" : {
+                "key" : "temperature",
+                "type" : "TIME_SERIES"
+              },
+              "predicate" : {
+                "type" : "NUMERIC",
+                "operation" : "GREATER",
+                "value" : {
+                  "defaultValue" : 18.0,
+                  "dynamicValue" : {
+                    "inherit" : false,
+                    "sourceAttribute" : "minMajorRoomTemperatureThreshold",
+                    "sourceType" : "CURRENT_CUSTOMER"
+                  },
+                  "userValue" : null
+                }
+              },
+              "value" : null,
+              "valueType" : "NUMERIC"
+            }, {
+              "key" : {
+                "key" : "temperature",
+                "type" : "TIME_SERIES"
+              },
+              "predicate" : {
+                "type" : "NUMERIC",
+                "operation" : "LESS",
+                "value" : {
+                  "defaultValue" : 26.0,
+                  "dynamicValue" : {
+                    "inherit" : false,
+                    "sourceAttribute" : "maxMajorRoomTemperatureThreshold",
+                    "sourceType" : "CURRENT_CUSTOMER"
+                  },
+                  "userValue" : null
+                }
+              },
+              "value" : null,
+              "valueType" : "NUMERIC"
+            } ],
+            "spec" : {
+              "type" : "SIMPLE"
+            }
+          },
+          "dashboardId" : null,
+          "schedule" : null
+        },
+        "createRules" : {
+          "CRITICAL" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "roomTemperatureAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              }, {
+                "key" : {
+                  "key" : "temperature",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "COMPLEX",
+                  "operation" : "OR",
+                  "predicates" : [ {
+                    "type" : "NUMERIC",
+                    "operation" : "GREATER_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 28.0,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "maxCriticalRoomTemperatureThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  }, {
+                    "type" : "NUMERIC",
+                    "operation" : "LESS_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 16.0,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "minCriticalRoomTemperatureThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  } ]
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          },
+          "MAJOR" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "roomTemperatureAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              }, {
+                "key" : {
+                  "key" : "temperature",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "COMPLEX",
+                  "operation" : "OR",
+                  "predicates" : [ {
+                    "type" : "NUMERIC",
+                    "operation" : "GREATER_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 26.0,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "maxMajorRoomTemperatureThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  }, {
+                    "type" : "NUMERIC",
+                    "operation" : "LESS_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 18.0,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "minMajorRoomTemperatureThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  } ]
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          }
+        },
+        "id" : "86621c9d-f5cd-bcde-3988-845cea4f31d9",
+        "propagate" : true,
+        "propagateRelationTypes" : [ "Contains" ],
+        "propagateToOwner" : false,
+        "propagateToOwnerHierarchy" : false,
+        "propagateToTenant" : false
+      }, {
+        "alarmType" : "Humidity",
+        "clearRule" : {
+          "alarmDetails" : null,
+          "condition" : {
+            "condition" : [ {
+              "key" : {
+                "key" : "humidity",
+                "type" : "TIME_SERIES"
+              },
+              "predicate" : {
+                "type" : "NUMERIC",
+                "operation" : "GREATER",
+                "value" : {
+                  "defaultValue" : 30.0,
+                  "dynamicValue" : {
+                    "inherit" : false,
+                    "sourceAttribute" : "minMajorRoomHumidityThreshold",
+                    "sourceType" : "CURRENT_CUSTOMER"
+                  },
+                  "userValue" : null
+                }
+              },
+              "value" : null,
+              "valueType" : "NUMERIC"
+            }, {
+              "key" : {
+                "key" : "humidity",
+                "type" : "TIME_SERIES"
+              },
+              "predicate" : {
+                "type" : "NUMERIC",
+                "operation" : "LESS",
+                "value" : {
+                  "defaultValue" : 70.0,
+                  "dynamicValue" : {
+                    "inherit" : false,
+                    "sourceAttribute" : "maxMajorRoomHumidityThreshold",
+                    "sourceType" : "CURRENT_CUSTOMER"
+                  },
+                  "userValue" : null
+                }
+              },
+              "value" : null,
+              "valueType" : "NUMERIC"
+            } ],
+            "spec" : {
+              "type" : "SIMPLE"
+            }
+          },
+          "dashboardId" : null,
+          "schedule" : null
+        },
+        "createRules" : {
+          "CRITICAL" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "roomHumidityAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              }, {
+                "key" : {
+                  "key" : "humidity",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "COMPLEX",
+                  "operation" : "OR",
+                  "predicates" : [ {
+                    "type" : "NUMERIC",
+                    "operation" : "GREATER_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 75.0,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "maxCriticalRoomHumidityThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  }, {
+                    "type" : "NUMERIC",
+                    "operation" : "LESS_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 25.0,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "minCriticalRoomHumidityThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  } ]
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          },
+          "MAJOR" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "roomHumidityAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              }, {
+                "key" : {
+                  "key" : "humidity",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "COMPLEX",
+                  "operation" : "OR",
+                  "predicates" : [ {
+                    "type" : "NUMERIC",
+                    "operation" : "GREATER_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 30.0,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "maxMajorRoomHumidityThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  }, {
+                    "type" : "NUMERIC",
+                    "operation" : "LESS_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 70.0,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "minMajorRoomHumidityThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  } ]
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          }
+        },
+        "id" : "86621c9d-f5cd-bcde-3988-845cea4f31e0",
+        "propagate" : true,
+        "propagateRelationTypes" : [ "Contains" ],
+        "propagateToOwner" : false,
+        "propagateToOwnerHierarchy" : false,
+        "propagateToTenant" : false
+      } ],
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "provisionConfiguration" : {
+        "type" : "DISABLED",
+        "provisionDeviceSecret" : null
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "provisionDeviceKey" : null,
+    "provisionType" : "DISABLED",
+    "softwareId" : null,
+    "transportType" : "DEFAULT",
+    "type" : "DEFAULT"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "entityType" : "CUSTOMER",
+  "entity" : {
+    "additionalInfo" : null,
+    "address" : "18, boulevard Albert",
+    "address2" : null,
+    "city" : "Berlin",
+    "country" : "Germany",
+    "customerId" : null,
+    "email" : "monty.coe@thingsboard.io",
+    "externalId" : null,
+    "id" : {
+      "entityType" : "CUSTOMER",
+      "id" : "c86b5cb0-ac04-11ee-883f-6bd49e8cfa16"
+    },
+    "name" : "Water Metering Customer B",
+    "ownerId" : null,
+    "parentCustomerId" : null,
+    "phone" : null,
+    "state" : null,
+    "title" : "Water Metering Customer B",
+    "zip" : "98000"
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "CUSTOMER",
+      "id" : "c86b5cb0-ac04-11ee-883f-6bd49e8cfa16"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "c89eefd0-ac04-11ee-883f-6bd49e8cfa16"
+    },
+    "type" : "Owns",
+    "typeGroup" : "COMMON"
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "cDailyConsumptionAlarmEnabled",
+      "lastUpdateTs" : 1704484703831,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "cDailyConsumptionThreshold",
+      "lastUpdateTs" : 1704484703831,
+      "longValue" : 100,
+      "strValue" : null
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "cLowTempAlarmEnabled",
+      "lastUpdateTs" : 1704484703831,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "cLowTempThreshold",
+      "lastUpdateTs" : 1704484703831,
+      "longValue" : 19,
+      "strValue" : null
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "cWeeklyConsumptionAlarmEnabled",
+      "lastUpdateTs" : 1704484703831,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "cWeeklyConsumptionThreshold",
+      "lastUpdateTs" : 1704484703831,
+      "longValue" : 500,
+      "strValue" : null
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "dailyConsumptionEmailEnabled",
+      "lastUpdateTs" : 1704484703831,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "dailyConsumptionSmsEnabled",
+      "lastUpdateTs" : 1704484703831,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "firstName",
+      "lastUpdateTs" : 1704484703831,
+      "longValue" : null,
+      "strValue" : "Monty"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastName",
+      "lastUpdateTs" : 1704484703831,
+      "longValue" : null,
+      "strValue" : "Coe"
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lowTempEmailEnabled",
+      "lastUpdateTs" : 1704484703831,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lowTempSmsEnabled",
+      "lastUpdateTs" : 1704484703831,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "weeklyConsumptionEmailEnabled",
+      "lastUpdateTs" : 1704484703831,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "weeklyConsumptionSmsEnabled",
+      "lastUpdateTs" : 1704484703831,
+      "longValue" : null,
+      "strValue" : null
+    } ]
+  }
+}

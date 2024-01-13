@@ -1,0 +1,864 @@
+{
+  "entityType" : "DEVICE_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "9a401910-ac05-11ee-8a35-2d562209d378"
+    },
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "98d73a40-ac05-11ee-8a35-2d562209d378"
+    },
+    "description" : null,
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "9b753db0-ac05-11ee-8a35-2d562209d378"
+    },
+    "image" : null,
+    "name" : "AL_Wristband",
+    "profileData" : {
+      "alarms" : [ {
+        "alarmType" : "Panic Button",
+        "clearRule" : {
+          "alarmDetails" : null,
+          "condition" : {
+            "condition" : [ {
+              "key" : {
+                "key" : "panicButton",
+                "type" : "TIME_SERIES"
+              },
+              "predicate" : {
+                "type" : "BOOLEAN",
+                "operation" : "EQUAL",
+                "value" : {
+                  "defaultValue" : false,
+                  "dynamicValue" : null,
+                  "userValue" : null
+                }
+              },
+              "value" : null,
+              "valueType" : "BOOLEAN"
+            } ],
+            "spec" : {
+              "type" : "SIMPLE"
+            }
+          },
+          "dashboardId" : null,
+          "schedule" : null
+        },
+        "createRules" : {
+          "CRITICAL" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "panicButton",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : true,
+                    "dynamicValue" : null,
+                    "userValue" : null
+                  }
+                },
+                "value" : null,
+                "valueType" : "BOOLEAN"
+              }, {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "panicButtonAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              } ],
+              "spec" : {
+                "type" : "REPEATING",
+                "predicate" : {
+                  "defaultValue" : 2,
+                  "dynamicValue" : {
+                    "inherit" : false,
+                    "sourceAttribute" : "criticalPanicButtonThreshold",
+                    "sourceType" : "CURRENT_CUSTOMER"
+                  },
+                  "userValue" : null
+                }
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          },
+          "MAJOR" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "panicButton",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : true,
+                    "dynamicValue" : null,
+                    "userValue" : null
+                  }
+                },
+                "value" : null,
+                "valueType" : "BOOLEAN"
+              }, {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "panicButtonAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              } ],
+              "spec" : {
+                "type" : "REPEATING",
+                "predicate" : {
+                  "defaultValue" : 1,
+                  "dynamicValue" : {
+                    "inherit" : false,
+                    "sourceAttribute" : "majorPanicButtonThreshold",
+                    "sourceType" : "CURRENT_CUSTOMER"
+                  },
+                  "userValue" : null
+                }
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          }
+        },
+        "id" : "ce647821-c3cd-a829-6d34-d56d517fe216",
+        "propagate" : true,
+        "propagateRelationTypes" : [ "Use" ],
+        "propagateToOwner" : true,
+        "propagateToOwnerHierarchy" : false,
+        "propagateToTenant" : true
+      }, {
+        "alarmType" : "Heart Rate",
+        "clearRule" : {
+          "alarmDetails" : null,
+          "condition" : {
+            "condition" : [ {
+              "key" : {
+                "key" : "pulse",
+                "type" : "TIME_SERIES"
+              },
+              "predicate" : {
+                "type" : "COMPLEX",
+                "operation" : "AND",
+                "predicates" : [ {
+                  "type" : "NUMERIC",
+                  "operation" : "LESS",
+                  "value" : {
+                    "defaultValue" : 120.0,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "maxMajorHeartRateThreshold",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                }, {
+                  "type" : "NUMERIC",
+                  "operation" : "GREATER",
+                  "value" : {
+                    "defaultValue" : 60.0,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "minMajorHeartRateThreshold",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                } ]
+              },
+              "value" : null,
+              "valueType" : "NUMERIC"
+            } ],
+            "spec" : {
+              "type" : "SIMPLE"
+            }
+          },
+          "dashboardId" : null,
+          "schedule" : null
+        },
+        "createRules" : {
+          "CRITICAL" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "pulse",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "COMPLEX",
+                  "operation" : "OR",
+                  "predicates" : [ {
+                    "type" : "NUMERIC",
+                    "operation" : "GREATER_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 140.0,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "maxCriticalHeartRateThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  }, {
+                    "type" : "NUMERIC",
+                    "operation" : "LESS_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 50.0,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "minCriticalHeartRateThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  } ]
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              }, {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "heartRateAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          },
+          "MAJOR" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "pulse",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "COMPLEX",
+                  "operation" : "OR",
+                  "predicates" : [ {
+                    "type" : "NUMERIC",
+                    "operation" : "GREATER_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 120.0,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "maxMajorHeartRateThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  }, {
+                    "type" : "NUMERIC",
+                    "operation" : "LESS_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 60.0,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "minMajorHeartRateThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  } ]
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              }, {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "heartRateAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          }
+        },
+        "id" : "b7105c9c-cf35-fa14-7fa3-4433fe5e6559",
+        "propagate" : true,
+        "propagateRelationTypes" : [ "Use" ],
+        "propagateToOwner" : true,
+        "propagateToOwnerHierarchy" : false,
+        "propagateToTenant" : true
+      }, {
+        "alarmType" : "Body Temperature",
+        "clearRule" : {
+          "alarmDetails" : null,
+          "condition" : {
+            "condition" : [ {
+              "key" : {
+                "key" : "temperature",
+                "type" : "TIME_SERIES"
+              },
+              "predicate" : {
+                "type" : "COMPLEX",
+                "operation" : "AND",
+                "predicates" : [ {
+                  "type" : "NUMERIC",
+                  "operation" : "LESS",
+                  "value" : {
+                    "defaultValue" : 37.0,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "maxMajorBodyTemperatureThreshold",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                }, {
+                  "type" : "NUMERIC",
+                  "operation" : "GREATER",
+                  "value" : {
+                    "defaultValue" : 36.0,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "minMajorBodyTemperatureThreshold",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                } ]
+              },
+              "value" : null,
+              "valueType" : "NUMERIC"
+            } ],
+            "spec" : {
+              "type" : "SIMPLE"
+            }
+          },
+          "dashboardId" : null,
+          "schedule" : null
+        },
+        "createRules" : {
+          "CRITICAL" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "temperature",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "COMPLEX",
+                  "operation" : "OR",
+                  "predicates" : [ {
+                    "type" : "NUMERIC",
+                    "operation" : "GREATER_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 38.0,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "maxCriticalBodyTemperatureThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  }, {
+                    "type" : "NUMERIC",
+                    "operation" : "LESS_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 35.5,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "minCriticalBodyTemperatureThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  } ]
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              }, {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "bodyTemperatureAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          },
+          "MAJOR" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "temperature",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "COMPLEX",
+                  "operation" : "OR",
+                  "predicates" : [ {
+                    "type" : "NUMERIC",
+                    "operation" : "GREATER_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 37.0,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "maxMajorBodyTemperatureThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  }, {
+                    "type" : "NUMERIC",
+                    "operation" : "LESS_OR_EQUAL",
+                    "value" : {
+                      "defaultValue" : 36.0,
+                      "dynamicValue" : {
+                        "inherit" : false,
+                        "sourceAttribute" : "minMajorBodyTemperatureThreshold",
+                        "sourceType" : "CURRENT_CUSTOMER"
+                      },
+                      "userValue" : null
+                    }
+                  } ]
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              }, {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "bodyTemperatureAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          }
+        },
+        "id" : "b7105c9c-cf35-fa14-7fa3-4433fe5e6560",
+        "propagate" : true,
+        "propagateRelationTypes" : [ "Use" ],
+        "propagateToOwner" : true,
+        "propagateToOwnerHierarchy" : false,
+        "propagateToTenant" : true
+      }, {
+        "alarmType" : "Noise",
+        "clearRule" : {
+          "alarmDetails" : null,
+          "condition" : {
+            "condition" : [ {
+              "key" : {
+                "key" : "noise",
+                "type" : "TIME_SERIES"
+              },
+              "predicate" : {
+                "type" : "NUMERIC",
+                "operation" : "LESS",
+                "value" : {
+                  "defaultValue" : 80.0,
+                  "dynamicValue" : {
+                    "inherit" : false,
+                    "sourceAttribute" : "noiseLevelMajorThreshold",
+                    "sourceType" : "CURRENT_CUSTOMER"
+                  },
+                  "userValue" : null
+                }
+              },
+              "value" : null,
+              "valueType" : "NUMERIC"
+            } ],
+            "spec" : {
+              "type" : "SIMPLE"
+            }
+          },
+          "dashboardId" : null,
+          "schedule" : null
+        },
+        "createRules" : {
+          "CRITICAL" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "noise",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "NUMERIC",
+                  "operation" : "GREATER_OR_EQUAL",
+                  "value" : {
+                    "defaultValue" : 100.0,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "noiseLevelCriticalThreshold",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              }, {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "noiseLevelAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          },
+          "MAJOR" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "noise",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "NUMERIC",
+                  "operation" : "GREATER",
+                  "value" : {
+                    "defaultValue" : 80.0,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "noiseLevelMajorThreshold",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              }, {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "noiseLevelAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          }
+        },
+        "id" : "850e1247-5a42-f357-3e9b-b90b8e99cc9d",
+        "propagate" : true,
+        "propagateRelationTypes" : [ "Use" ],
+        "propagateToOwner" : true,
+        "propagateToOwnerHierarchy" : false,
+        "propagateToTenant" : true
+      }, {
+        "alarmType" : "Battery",
+        "clearRule" : {
+          "alarmDetails" : null,
+          "condition" : {
+            "condition" : [ {
+              "key" : {
+                "key" : "battery",
+                "type" : "TIME_SERIES"
+              },
+              "predicate" : {
+                "type" : "NUMERIC",
+                "operation" : "GREATER",
+                "value" : {
+                  "defaultValue" : 25.0,
+                  "dynamicValue" : {
+                    "inherit" : false,
+                    "sourceAttribute" : "minMajorBatteryLevelThreshold",
+                    "sourceType" : "CURRENT_CUSTOMER"
+                  },
+                  "userValue" : null
+                }
+              },
+              "value" : null,
+              "valueType" : "NUMERIC"
+            } ],
+            "spec" : {
+              "type" : "SIMPLE"
+            }
+          },
+          "dashboardId" : null,
+          "schedule" : null
+        },
+        "createRules" : {
+          "CRITICAL" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "batteryLevelAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              }, {
+                "key" : {
+                  "key" : "battery",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "NUMERIC",
+                  "operation" : "LESS_OR_EQUAL",
+                  "value" : {
+                    "defaultValue" : 15.0,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "minCriticalBatteryLevelThreshold",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          },
+          "MAJOR" : {
+            "alarmDetails" : null,
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "enabled",
+                  "type" : "CONSTANT"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : false,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "batteryLevelAlarmEnabled",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : true,
+                "valueType" : "BOOLEAN"
+              }, {
+                "key" : {
+                  "key" : "battery",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "NUMERIC",
+                  "operation" : "LESS_OR_EQUAL",
+                  "value" : {
+                    "defaultValue" : 25.0,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "minMajorBatteryLevelThreshold",
+                      "sourceType" : "CURRENT_CUSTOMER"
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          }
+        },
+        "id" : "6ca2bf03-5fb1-6e4e-19d2-a736829226b6",
+        "propagate" : true,
+        "propagateRelationTypes" : [ "Use" ],
+        "propagateToOwner" : false,
+        "propagateToOwnerHierarchy" : false,
+        "propagateToTenant" : false
+      } ],
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "provisionConfiguration" : {
+        "type" : "DISABLED",
+        "provisionDeviceSecret" : null
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "provisionDeviceKey" : null,
+    "provisionType" : "DISABLED",
+    "softwareId" : null,
+    "transportType" : "DEFAULT",
+    "type" : "DEFAULT"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
