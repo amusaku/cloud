@@ -2254,7 +2254,6 @@
     "ownerId" : null,
     "title" : "Smart Supermarket Administration"
   },
-  "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ ]
   }
