@@ -1,0 +1,147 @@
+{
+  "entityType" : "ASSET",
+  "entity" : {
+    "additionalInfo" : null,
+    "assetProfileId" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "2e30c4f0-b22b-11ee-b962-ddbc483e1eb0"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET",
+      "id" : "2e4a1950-b22b-11ee-b962-ddbc483e1eb0"
+    },
+    "label" : "Corn",
+    "name" : "SI Field 2",
+    "ownerId" : null,
+    "type" : "SI Field"
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "2e4a1950-b22b-11ee-b962-ddbc483e1eb0"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "2edb5cd0-b22b-11ee-b962-ddbc483e1eb0"
+    },
+    "type" : "FieldToWaterMeter",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "2e4a1950-b22b-11ee-b962-ddbc483e1eb0"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "2eefcf31-b22b-11ee-b962-ddbc483e1eb0"
+    },
+    "type" : "FieldToSmartValve",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "2e4a1950-b22b-11ee-b962-ddbc483e1eb0"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "2f063d60-b22b-11ee-b962-ddbc483e1eb0"
+    },
+    "type" : "FieldToMoistureSensor",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "2e4a1950-b22b-11ee-b962-ddbc483e1eb0"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "2f207c20-b22b-11ee-b962-ddbc483e1eb0"
+    },
+    "type" : "FieldToMoistureSensor",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "2e4a1950-b22b-11ee-b962-ddbc483e1eb0"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "2f37fbc0-b22b-11ee-b962-ddbc483e1eb0"
+    },
+    "type" : "FieldToMoistureSensor",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "2e4a1950-b22b-11ee-b962-ddbc483e1eb0"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "2f5017a0-b22b-11ee-b962-ddbc483e1eb0"
+    },
+    "type" : "FieldToMoistureSensor",
+    "typeGroup" : "COMMON"
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "criticalAlarmsCount",
+      "lastUpdateTs" : 1705160938669,
+      "longValue" : 0,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "cropType",
+      "lastUpdateTs" : 1705160902545,
+      "longValue" : null,
+      "strValue" : "corn"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "majorAlarmsCount",
+      "lastUpdateTs" : 1705160938669,
+      "longValue" : 6,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 80.0,
+      "jsonValue" : null,
+      "key" : "maxMoistureThreshold",
+      "lastUpdateTs" : 1705160902545,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 23.0,
+      "jsonValue" : null,
+      "key" : "minMoistureThreshold",
+      "lastUpdateTs" : 1705160902545,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[[49.35733376286064,32.099990847388675],[49.36462881286005,32.09157942926953],[49.3693518503928,32.1008920749419],[49.362018441924455,32.10958265164581]]",
+      "key" : "perimeter",
+      "lastUpdateTs" : 1705160902545,
+      "longValue" : null,
+      "strValue" : null
+    } ]
+  }
+}

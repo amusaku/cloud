@@ -43,18 +43,6 @@
     },
     "to" : {
       "entityType" : "DEVICE",
-      "id" : "9cc53d50-ac05-11ee-8a35-2d562209d378"
-    },
-    "type" : "Contains",
-    "typeGroup" : "COMMON"
-  }, {
-    "additionalInfo" : null,
-    "from" : {
-      "entityType" : "ASSET",
-      "id" : "9bfac160-ac05-11ee-8a35-2d562209d378"
-    },
-    "to" : {
-      "entityType" : "DEVICE",
       "id" : "9cdb8470-ac05-11ee-8a35-2d562209d378"
     },
     "type" : "Contains",

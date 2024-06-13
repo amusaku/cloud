@@ -19,17 +19,17 @@
       "settings" : { },
       "actions" : { }
     },
-    "edgeGroupAll" : true,
+    "edgeGroupAll" : false,
     "externalId" : null,
     "groupAll" : false,
     "id" : {
       "entityType" : "ENTITY_GROUP",
-      "id" : "a48297e0-ac05-11ee-8a35-2d562209d378"
+      "id" : "2e3f9200-b22b-11ee-b962-ddbc483e1eb0"
     },
-    "name" : "[Edge][Assisted Living Company] Remote Residence R1 All",
+    "name" : "Smart Irrigation",
     "ownerId" : {
-      "entityType" : "CUSTOMER",
-      "id" : "9b7c1b80-ac05-11ee-8a35-2d562209d378"
+      "entityType" : "TENANT",
+      "id" : "6dbb60e0-ac03-11ee-883f-6bd49e8cfa16"
     },
     "type" : "ASSET"
   },

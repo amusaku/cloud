@@ -19,17 +19,17 @@
       "settings" : { },
       "actions" : { }
     },
-    "edgeGroupAll" : true,
+    "edgeGroupAll" : false,
     "externalId" : null,
     "groupAll" : false,
     "id" : {
       "entityType" : "ENTITY_GROUP",
-      "id" : "a48297e0-ac05-11ee-8a35-2d562209d378"
+      "id" : "68ff7b40-b1fd-11ee-af88-13372bac1769"
     },
-    "name" : "[Edge][Assisted Living Company] Remote Residence R1 All",
+    "name" : "Supermarkets",
     "ownerId" : {
       "entityType" : "CUSTOMER",
-      "id" : "9b7c1b80-ac05-11ee-8a35-2d562209d378"
+      "id" : "68cd47b0-b1fd-11ee-af88-13372bac1769"
     },
     "type" : "ASSET"
   },
