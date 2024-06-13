@@ -119,6 +119,7 @@
         "id" : "a255f3e0-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "Save Timeseries",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
@@ -129,9 +130,11 @@
       },
       "configuration" : {
         "scope" : "CLIENT_SCOPE",
+        "notifyDevice" : true,
+        "sendAttributesUpdatedNotification" : false,
         "updateAttributesOnlyOnValueChange" : false
       },
-      "configurationVersion" : 1,
+      "configurationVersion" : 2,
       "createdTime" : 0,
       "debugMode" : false,
       "externalId" : null,
@@ -140,6 +143,7 @@
         "id" : "a256b730-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "Save Client Attributes",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
@@ -160,6 +164,7 @@
         "id" : "a257a190-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "Message Type Switch",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeSwitchNode"
@@ -182,6 +187,7 @@
         "id" : "a2583dd0-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "Log RPC from Device",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.action.TbLogNode"
@@ -204,6 +210,7 @@
         "id" : "a258da10-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "Log Other",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.action.TbLogNode"
@@ -224,6 +231,7 @@
         "id" : "a2597650-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "RPC Call Request",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.rpc.TbSendRPCRequestNode"
@@ -246,6 +254,7 @@
         "id" : "a25a1290-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "Device Profile Node",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.profile.TbDeviceProfileNode"
@@ -278,6 +287,7 @@
         "id" : "a25aaed0-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "Change Owner from Gateway to Device",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.transform.TbChangeOriginatorNode"
@@ -299,6 +309,7 @@
         "id" : "a25b4b10-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "To Room Device Rule Chain",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.flow.TbRuleChainInputNode"
@@ -326,6 +337,7 @@
         "id" : "a25be750-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "Fetch Room attributes",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.metadata.TbGetAttributesNode"
@@ -336,15 +348,15 @@
         "layoutY" : 353
       },
       "configuration" : {
-        "fromMetadata" : false,
         "renameKeysMapping" : {
           "ss_roomXPos" : "xPos",
           "ss_roomYPos" : "yPos",
           "ss_zone" : "zone",
           "ss_room" : "room"
-        }
+        },
+        "renameIn" : "DATA"
       },
-      "configurationVersion" : 0,
+      "configurationVersion" : 2,
       "createdTime" : 0,
       "debugMode" : false,
       "externalId" : null,
@@ -353,6 +365,7 @@
         "id" : "a25c8390-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "Rename Msg Fields",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.transform.TbRenameKeysNode"
@@ -363,12 +376,12 @@
         "layoutY" : 351
       },
       "configuration" : {
-        "fromMetadata" : true,
         "renameKeysMapping" : {
           "deviceName" : "gateway"
-        }
+        },
+        "renameIn" : "METADATA"
       },
-      "configurationVersion" : 0,
+      "configurationVersion" : 2,
       "createdTime" : 0,
       "debugMode" : false,
       "externalId" : null,
@@ -377,6 +390,7 @@
         "id" : "a25cf8c0-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "Rename Metadata Fields",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.transform.TbRenameKeysNode"
@@ -391,10 +405,9 @@
         "strategy" : "ALL",
         "maxPendingMsgs" : 1000,
         "outMsgType" : "POST_TELEMETRY_REQUEST",
-        "queueName" : "Main",
         "maxRetries" : 3
       },
-      "configurationVersion" : 0,
+      "configurationVersion" : 1,
       "createdTime" : 0,
       "debugMode" : false,
       "externalId" : null,
@@ -403,6 +416,7 @@
         "id" : "a25d6df0-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "Deduplicate From Multiple Gateways",
+      "queueName" : "Main",
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.deduplication.TbMsgDeduplicationNode"
@@ -426,6 +440,7 @@
         "id" : "a25e0a30-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "Use msg with Max RSSI",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
@@ -449,6 +464,7 @@
         "id" : "a25e7f60-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "Extract Data",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
@@ -470,6 +486,7 @@
         "id" : "a25f42b0-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "To Wristband Rule Chain",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.flow.TbRuleChainInputNode"
@@ -491,6 +508,7 @@
         "id" : "a25fdef0-ac05-11ee-8a35-2d562209d378"
       },
       "name" : "Switch by Device Type",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.filter.TbDeviceTypeSwitchNode"

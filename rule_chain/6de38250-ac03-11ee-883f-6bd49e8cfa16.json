@@ -42,6 +42,7 @@
     "firstNodeIndex" : 0,
     "nodes" : [ {
       "additionalInfo" : {
+        "description" : null,
         "layoutX" : 242,
         "layoutY" : 314
       },
@@ -68,13 +69,14 @@
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
-      "debugMode" : false,
+      "debugMode" : true,
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
         "id" : "6de704c0-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "Generate Report",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.report.TbGenerateReportNode"
@@ -97,6 +99,7 @@
         "id" : "6de88b60-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "If send email",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
@@ -119,6 +122,7 @@
         "id" : "6de975c0-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "Prepare email metadata",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
@@ -144,6 +148,7 @@
         "id" : "6dea3910-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "To report email",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.mail.TbMsgToEmailNode"
@@ -171,6 +176,7 @@
         "id" : "6deafc60-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "Send report",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.mail.TbSendEmailNode"
@@ -192,6 +198,7 @@
         "id" : "6debbfb0-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "ACK generate report",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.flow.TbAckNode"

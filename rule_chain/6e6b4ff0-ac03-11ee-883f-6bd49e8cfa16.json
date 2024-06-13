@@ -98,6 +98,7 @@
         "id" : "6e6caf80-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "Is Entity Group",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.filter.TbOriginatorTypeFilterNode"
@@ -119,6 +120,7 @@
         "id" : "6e6d4bc0-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "Post attributes or RPC request",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeFilterNode"
@@ -132,7 +134,7 @@
         "entityGroupId" : null,
         "entityGroupIsMessageOriginator" : true
       },
-      "configurationVersion" : 0,
+      "configurationVersion" : 1,
       "createdTime" : 0,
       "debugMode" : false,
       "externalId" : null,
@@ -141,6 +143,7 @@
         "id" : "6e6dc0f0-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "Duplicate To Group Entities",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.transform.TbDuplicateMsgToGroupNode"
@@ -163,6 +166,7 @@
         "id" : "6e6e3620-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "Device Profile Node",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.profile.TbDeviceProfileNode"
@@ -183,6 +187,7 @@
         "id" : "6e6eab50-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "Save Timeseries",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
@@ -193,11 +198,11 @@
       },
       "configuration" : {
         "scope" : "CLIENT_SCOPE",
-        "notifyDevice" : "false",
-        "sendAttributesUpdatedNotification" : "false",
-        "updateAttributesOnlyOnValueChange" : "true"
+        "notifyDevice" : false,
+        "sendAttributesUpdatedNotification" : false,
+        "updateAttributesOnlyOnValueChange" : true
       },
-      "configurationVersion" : 1,
+      "configurationVersion" : 2,
       "createdTime" : 0,
       "debugMode" : false,
       "externalId" : null,
@@ -206,6 +211,7 @@
         "id" : "6e6f2080-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "Save Client Attributes",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
@@ -226,6 +232,7 @@
         "id" : "6e6fe3d0-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "Message Type Switch",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeSwitchNode"
@@ -248,6 +255,7 @@
         "id" : "6e708010-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "Log RPC from Device",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.action.TbLogNode"
@@ -270,6 +278,7 @@
         "id" : "6e70ce30-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "Log Other",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.action.TbLogNode"
@@ -290,6 +299,7 @@
         "id" : "6e716a70-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "RPC Call Request",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.rpc.TbSendRPCRequestNode"
@@ -310,6 +320,7 @@
         "id" : "6e7206b0-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "Push to cloud",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.edge.TbMsgPushToCloudNode"
@@ -330,6 +341,7 @@
         "id" : "6e72a2f0-ac03-11ee-883f-6bd49e8cfa16"
       },
       "name" : "Push to cloud",
+      "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.edge.TbMsgPushToCloudNode"

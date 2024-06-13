@@ -1,0 +1,103 @@
+{
+  "entityType" : "ASSET",
+  "entity" : {
+    "additionalInfo" : null,
+    "assetProfileId" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "baadeaa0-b228-11ee-af88-13372bac1769"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET",
+      "id" : "bab3de10-b228-11ee-af88-13372bac1769"
+    },
+    "label" : null,
+    "name" : "Los Angeles, CA",
+    "ownerId" : null,
+    "type" : "AQI City"
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "bab3de10-b228-11ee-af88-13372bac1769"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "bac60680-b228-11ee-af88-13372bac1769"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "bab3de10-b228-11ee-af88-13372bac1769"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "baddad30-b228-11ee-af88-13372bac1769"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "bab3de10-b228-11ee-af88-13372bac1769"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "baefd5a0-b228-11ee-af88-13372bac1769"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "bab3de10-b228-11ee-af88-13372bac1769"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "bafddf60-b228-11ee-af88-13372bac1769"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "bab3de10-b228-11ee-af88-13372bac1769"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "bb10f230-b228-11ee-af88-13372bac1769"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "batteryLevelThreshold",
+      "lastUpdateTs" : 1705159849624,
+      "longValue" : 30,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityTimeout",
+      "lastUpdateTs" : 1705159849624,
+      "longValue" : 14400000,
+      "strValue" : null
+    } ]
+  }
+}
