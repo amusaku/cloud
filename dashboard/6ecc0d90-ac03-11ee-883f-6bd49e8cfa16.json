@@ -1,7 +1,10 @@
 {
   "entityType" : "DASHBOARD",
   "entity" : {
-    "assignedCustomers" : null,
+    "title" : "ThingsBoard IoT Gateways",
+    "image" : null,
+    "mobileHide" : false,
+    "mobileOrder" : null,
     "configuration" : {
       "description" : "",
       "widgets" : {
@@ -6215,18 +6218,16 @@
         "dashboardCss" : ""
       }
     },
+    "name" : "ThingsBoard IoT Gateways",
+    "resources" : null,
+    "assignedCustomers" : null,
     "customerId" : null,
     "externalId" : null,
     "id" : {
       "entityType" : "DASHBOARD",
       "id" : "6ecc0d90-ac03-11ee-883f-6bd49e8cfa16"
     },
-    "image" : null,
-    "mobileHide" : false,
-    "mobileOrder" : null,
-    "name" : "ThingsBoard IoT Gateways",
-    "ownerId" : null,
-    "title" : "ThingsBoard IoT Gateways"
+    "ownerId" : null
   },
   "relations" : [ ],
   "attributes" : {

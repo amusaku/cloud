@@ -1,0 +1,1606 @@
+{
+  "entityType" : "DASHBOARD",
+  "entity" : {
+    "title" : "Fleet tracking",
+    "image" : null,
+    "mobileHide" : false,
+    "mobileOrder" : null,
+    "configuration" : {
+      "widgets" : {
+        "80ccb4c6-14e5-e901-62fb-79fe8e492529" : {
+          "type" : "latest",
+          "sizeX" : 28,
+          "sizeY" : 11,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "0d54b239-c13d-b9ca-a71d-2e8af860d803",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "latitude",
+                "type" : "timeseries",
+                "label" : "latitude",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.08882764953671507
+              }, {
+                "name" : "longitude",
+                "type" : "timeseries",
+                "label" : "longitude",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.7028343732324063
+              }, {
+                "name" : "speed",
+                "type" : "timeseries",
+                "label" : "speed",
+                "color" : "#f44336",
+                "settings" : { },
+                "_hash" : 0.9911984919957897
+              }, {
+                "name" : "fuel",
+                "type" : "timeseries",
+                "label" : "fuel",
+                "color" : "#ffc107",
+                "settings" : { },
+                "_hash" : 0.14937549313727505
+              }, {
+                "name" : "status",
+                "type" : "timeseries",
+                "label" : "status",
+                "color" : "#607d8b",
+                "settings" : { },
+                "_hash" : 0.49237760336806824
+              } ]
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "hideInterval" : false,
+              "hideAggregation" : false,
+              "hideAggInterval" : false,
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 5000,
+                "timewindowMs" : 300000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1693821252514,
+                  "endTimeMs" : 1693907652514
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "NONE",
+                "limit" : 2500
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "fitMapBounds" : true,
+              "latKeyName" : "latitude",
+              "lngKeyName" : "longitude",
+              "showLabel" : true,
+              "label" : "${entityName}",
+              "markerImageSize" : 34,
+              "useColorFunction" : true,
+              "markerImages" : [ "tb-image;/api/images/system/map_marker_image_0_(1).png", "tb-image;/api/images/system/map_marker_image_1_(1).png", "tb-image;/api/images/system/map_marker_image_2_(1).png", "tb-image;/api/images/system/fleet_tracking_dashboard_widget_buses_location_marker_image_3.png" ],
+              "useMarkerImageFunction" : true,
+              "mapProvider" : "CartoDB.Positron",
+              "showTooltip" : true,
+              "autocloseTooltip" : true,
+              "tooltipFunction" : "var vehicleType = dsData[dsIndex]['vehicleType'];\r\nif (typeof vehicleType !== undefined) {\r\n    if (vehicleType == \"bus\") {\r\n        return '<b>Bus: ${entityName}</b><br/><b>Bus route:</b> ${busRoute}<br/>';\r\n    } else if (vehicleType == \"car\") {\r\n        return '<b>Car: ${entityName}</b><br/><b>Current destination:</b> ${destination}<br/>';\r\n    }\r\n}",
+              "colorFunction" : "var status = dsData[dsIndex]['status'];\nif (typeof status !== undefined) {\n    if (status === \"On route\") {\n        return 'green';\n    }\n    if (status === \"Broken\") {\n        return 'red';\n    }\n    if (status === \"Refueling\") {\n        return 'blue';\n    }\n    if (status === \"At the stop\") {\n        return 'orange';\n    }\n}\nreturn 'red';",
+              "markerImageFunction" : "var res = {\n    url: images[0],\n    size: 55\n};\nvar status = dsData[dsIndex]['status'];\nif (typeof status !== undefined) {\n    if (status === \"On route\") {\n        res.url = images[0];\n    } else if (status === \"Broken\") {\n        res.url = images[2];\n    } else if (status === \"Refueling\") {\n        res.url = images[3];\n    } else if (status === \"At the stop\") {\n        res.url = images[1];\n    }\n}\n\nreturn res;",
+              "useLabelFunction" : true,
+              "labelFunction" : "var status = dsData[dsIndex]['status'];\nvar color = '#f16362';\nif (typeof status !== undefined) {\n    if (status === \"On route\") {\n        color = '#52a352';\n    }\n    if (status === \"Broken\") {\n        color = '#f16362';\n    }\n    if (status === \"Refueling\") {\n        color = '#408dde';\n    }\n    if (status === \"At the stop\") {\n        color = 'orange';\n    }\n}\nreturn \"<div style='position: relative; white-space: nowrap; text-align: center; font-size: 16px; top: 25px;'><span style='margin-left: -500%;'></span><div style='border: solid \"+color+\"; border-radius: 10px; color: \"+color+\"; background-color: #fff; padding-left: 5px; padding-right: 5px; padding-top: 3px; padding-bottom: 3px;'>${entityName}<div style='font-size: 10px;'> Status: ${status}</div><div style='font-size: 10px;'> Speed: ${speed:0} MPH</div></div><span style='margin-right: -500%;'></span></div>\";",
+              "defaultZoomLevel" : 13,
+              "provider" : "openstreet-map",
+              "defaultCenterPosition" : "0,0",
+              "mapPageSize" : 16384,
+              "showTooltipAction" : "click",
+              "tooltipPattern" : "<b>Latitude:</b> ${latitude:7}<br/><b>Longitude:</b> ${longitude:7}<br/><b>Speed:</b> ${speed:0} MPH<br/><b>Fuel level:</b> ${fuel:0} %<br/><b>Status:</b> ${status}<br/><br/><link-act name='route-history'>Route history</link-act><br/><br/><button-act name='bus-details'>Bus details</button-act>"
+            },
+            "title" : "Buses location",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : false,
+            "showLegend" : false,
+            "widgetStyle" : { },
+            "actions" : {
+              "tooltipAction" : [ {
+                "name" : "bus-details",
+                "icon" : "more_horiz",
+                "type" : "openDashboardState",
+                "targetDashboardStateId" : "bus_details",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : false,
+                "id" : "735fe18e-cb35-2b7b-7338-8a57501b8e87"
+              }, {
+                "name" : "route-history",
+                "icon" : "more_horiz",
+                "type" : "openDashboardState",
+                "targetDashboardStateId" : "route_history",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openInSeparateDialog" : true,
+                "dialogTitle" : "",
+                "dialogHideDashboardToolbar" : true,
+                "dialogWidth" : null,
+                "dialogHeight" : null,
+                "openRightLayout" : false,
+                "id" : "bc19e1d7-82d7-0ff2-f725-87cb26c25b8d"
+              } ]
+            },
+            "displayTimewindow" : true,
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "enableDataExport" : false
+          },
+          "id" : "80ccb4c6-14e5-e901-62fb-79fe8e492529",
+          "typeFullFqn" : "system.maps_v2.openstreetmap"
+        },
+        "7973dcd9-4764-ffd4-4c55-d309b445ac7d" : {
+          "type" : "timeseries",
+          "sizeX" : 15,
+          "sizeY" : 9,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "Bus A",
+              "entityAliasId" : "302cf6c2-0d32-95ff-63f3-1bfa43b3b75e",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "speed",
+                "type" : "timeseries",
+                "label" : "Speed",
+                "color" : "#ff1919",
+                "settings" : {
+                  "showLines" : true,
+                  "fillLines" : false,
+                  "showPoints" : false,
+                  "showPointShape" : "circle",
+                  "pointShapeFormatter" : "var size = radius * Math.sqrt(Math.PI) / 2;\nctx.moveTo(x - size, y - size);\nctx.lineTo(x + size, y + size);\nctx.moveTo(x - size, y + size);\nctx.lineTo(x + size, y - size);",
+                  "showPointsLineWidth" : 5,
+                  "showPointsRadius" : 3,
+                  "axisPosition" : "left",
+                  "comparisonSettings" : {
+                    "showValuesForComparison" : true
+                  }
+                },
+                "_hash" : 0.4418768650923379,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ]
+            } ],
+            "timewindow" : {
+              "realtime" : {
+                "timewindowMs" : 60000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "shadowSize" : 4,
+              "fontColor" : "#545454",
+              "fontSize" : 10,
+              "xaxis" : {
+                "showLabels" : true,
+                "color" : "#545454"
+              },
+              "yaxis" : {
+                "showLabels" : true,
+                "color" : "#545454",
+                "title" : "Speed, MPH",
+                "titleAngle" : 90
+              },
+              "grid" : {
+                "color" : "#545454",
+                "tickColor" : "#DDDDDD",
+                "verticalLines" : true,
+                "horizontalLines" : true,
+                "backgroundColor" : "#ffffff",
+                "outlineWidth" : 1
+              },
+              "smoothLines" : true,
+              "timeForComparison" : "months",
+              "xaxisSecond" : {
+                "axisPosition" : "top",
+                "showLabels" : true
+              },
+              "showLegend" : false,
+              "legendConfig" : {
+                "direction" : "column",
+                "position" : "right",
+                "sortDataKeys" : null,
+                "showMin" : false,
+                "showMax" : false,
+                "showAvg" : false,
+                "showTotal" : false
+              }
+            },
+            "title" : "Speed tracking",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 600,
+              "color" : "rgba(0,0,0,.47)"
+            },
+            "mobileHeight" : 4,
+            "mobileOrder" : 3,
+            "units" : "MPH",
+            "decimals" : 0,
+            "useDashboardTimewindow" : true,
+            "widgetStyle" : { },
+            "actions" : { },
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "enableDataExport" : true
+          },
+          "row" : 11,
+          "col" : 20,
+          "id" : "7973dcd9-4764-ffd4-4c55-d309b445ac7d",
+          "typeFullFqn" : "system.charts.basic_timeseries"
+        },
+        "64326076-c7cc-42c4-8f5a-284bb0c3d134" : {
+          "type" : "timeseries",
+          "sizeX" : 15,
+          "sizeY" : 9,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "Bus A",
+              "entityAliasId" : "302cf6c2-0d32-95ff-63f3-1bfa43b3b75e",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "fuel",
+                "type" : "timeseries",
+                "label" : "Fuel",
+                "color" : "#9500ff",
+                "settings" : {
+                  "showLines" : true,
+                  "fillLines" : true,
+                  "showPoints" : false,
+                  "showPointShape" : "circle",
+                  "pointShapeFormatter" : "var size = radius * Math.sqrt(Math.PI) / 2;\nctx.moveTo(x - size, y - size);\nctx.lineTo(x + size, y + size);\nctx.moveTo(x - size, y + size);\nctx.lineTo(x + size, y - size);",
+                  "showPointsLineWidth" : 5,
+                  "showPointsRadius" : 3,
+                  "axisPosition" : "left",
+                  "comparisonSettings" : {
+                    "showValuesForComparison" : true
+                  }
+                },
+                "_hash" : 0.25156760146232626,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ]
+            } ],
+            "timewindow" : {
+              "realtime" : {
+                "timewindowMs" : 60000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "shadowSize" : 4,
+              "fontColor" : "#545454",
+              "fontSize" : 10,
+              "xaxis" : {
+                "showLabels" : true,
+                "color" : "#545454"
+              },
+              "yaxis" : {
+                "showLabels" : true,
+                "color" : "#545454",
+                "title" : "Fuel level, %",
+                "titleAngle" : 90
+              },
+              "grid" : {
+                "color" : "#545454",
+                "tickColor" : "#DDDDDD",
+                "verticalLines" : true,
+                "horizontalLines" : true,
+                "backgroundColor" : "#ffffff",
+                "outlineWidth" : 1
+              },
+              "smoothLines" : true,
+              "stack" : false,
+              "tooltipCumulative" : false,
+              "timeForComparison" : "months",
+              "xaxisSecond" : {
+                "axisPosition" : "top",
+                "showLabels" : true
+              },
+              "showLegend" : false,
+              "legendConfig" : {
+                "position" : "bottom",
+                "showMin" : true,
+                "showMax" : true,
+                "showAvg" : true,
+                "showTotal" : false
+              }
+            },
+            "title" : "Fuel level tracking",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 600,
+              "color" : "rgba(0,0,0,.47)"
+            },
+            "mobileHeight" : 4,
+            "units" : "%",
+            "decimals" : 1,
+            "useDashboardTimewindow" : true,
+            "widgetStyle" : { },
+            "actions" : { },
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "enableDataExport" : true
+          },
+          "row" : 11,
+          "col" : 35,
+          "id" : "64326076-c7cc-42c4-8f5a-284bb0c3d134",
+          "typeFullFqn" : "system.charts.basic_timeseries"
+        },
+        "8f99b7f9-7b9d-846a-176e-4d354f2f8df3" : {
+          "type" : "latest",
+          "sizeX" : 5,
+          "sizeY" : 5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "Bus A",
+              "entityAliasId" : "302cf6c2-0d32-95ff-63f3-1bfa43b3b75e",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "speed",
+                "type" : "timeseries",
+                "label" : "speed",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.8896906875646189,
+                "units" : null,
+                "decimals" : 0,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ]
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1693821252514,
+                  "endTimeMs" : 1693907652514
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#ffffff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "maxValue" : 80,
+              "startAngle" : 45,
+              "ticksAngle" : 270,
+              "showBorder" : false,
+              "defaultColor" : "#e65100",
+              "needleCircleSize" : 7,
+              "highlights" : [ {
+                "from" : 40,
+                "to" : 60,
+                "color" : "#fdd835"
+              }, {
+                "color" : "#e57373",
+                "from" : 60,
+                "to" : 80
+              } ],
+              "showUnitTitle" : true,
+              "colorPlate" : "rgba(255, 255, 255, 0)",
+              "colorMajorTicks" : "#444",
+              "colorMinorTicks" : "#666",
+              "minorTicks" : 2,
+              "valueInt" : 3,
+              "minValue" : 0,
+              "highlightsWidth" : 15,
+              "valueBox" : true,
+              "animation" : true,
+              "animationDuration" : 1500,
+              "animationRule" : "linear",
+              "colorNeedleShadowUp" : "rgba(2, 255, 255, 0)",
+              "colorNeedleShadowDown" : "rgba(188, 143, 143, 0.78)",
+              "majorTicksCount" : 8,
+              "numbersFont" : {
+                "family" : "RobotoDraft",
+                "size" : 22,
+                "style" : "normal",
+                "weight" : "500",
+                "color" : "#616161"
+              },
+              "titleFont" : {
+                "family" : "RobotoDraft",
+                "size" : 24,
+                "style" : "normal",
+                "weight" : "500",
+                "color" : "#888"
+              },
+              "unitsFont" : {
+                "family" : "RobotoDraft",
+                "size" : 28,
+                "style" : "normal",
+                "weight" : "500",
+                "color" : "#616161"
+              },
+              "valueFont" : {
+                "size" : 32,
+                "style" : "normal",
+                "weight" : "normal",
+                "shadowColor" : "rgba(0, 0, 0, 0.49)",
+                "color" : "#444",
+                "family" : "Segment7Standard"
+              },
+              "colorValueBoxRect" : "#888",
+              "colorValueBoxRectEnd" : "#666",
+              "colorValueBoxBackground" : "#babab2",
+              "colorValueBoxShadow" : "rgba(0,0,0,1)",
+              "unitTitle" : "SPEED"
+            },
+            "title" : "New Speed gauge - Canvas Gauges",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "mobileHeight" : 4,
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "enableDataExport" : false,
+            "widgetStyle" : { },
+            "showLegend" : false
+          },
+          "row" : 11,
+          "col" : 0,
+          "id" : "8f99b7f9-7b9d-846a-176e-4d354f2f8df3",
+          "typeFullFqn" : "system.analogue_gauges.speed_gauge_canvas_gauges"
+        },
+        "ddd8ce66-4703-eccf-29d4-abb313654853" : {
+          "type" : "latest",
+          "sizeX" : 5,
+          "sizeY" : 5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "Bus A",
+              "entityAliasId" : "302cf6c2-0d32-95ff-63f3-1bfa43b3b75e",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "fuel",
+                "type" : "timeseries",
+                "label" : "fuel",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.8320493007835159
+              } ]
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1693821252514,
+                  "endTimeMs" : 1693907652514
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#ffffff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "maxValue" : 100,
+              "startAngle" : 120,
+              "showBorder" : false,
+              "defaultColor" : "#ff0000",
+              "needleCircleSize" : 7,
+              "highlights" : [ {
+                "from" : 0,
+                "to" : 25,
+                "color" : "#e57373"
+              }, {
+                "color" : "#ffe082",
+                "from" : 25,
+                "to" : 50
+              }, {
+                "from" : 50,
+                "to" : 100,
+                "color" : "#43a047"
+              } ],
+              "showUnitTitle" : true,
+              "colorPlate" : "rgba(255, 255, 255, 0)",
+              "colorMajorTicks" : "#010101",
+              "colorMinorTicks" : "#010101",
+              "minorTicks" : 2,
+              "valueInt" : 3,
+              "minValue" : 0,
+              "highlightsWidth" : 25,
+              "valueBox" : true,
+              "animation" : true,
+              "animationDuration" : 500,
+              "animationRule" : "dequad",
+              "colorNeedleShadowUp" : "rgba(2, 255, 255, 0)",
+              "colorNeedleShadowDown" : "rgba(188, 143, 143, 0.78)",
+              "majorTicksCount" : 4,
+              "numbersFont" : {
+                "family" : "RobotoDraft",
+                "size" : 22,
+                "style" : "normal",
+                "weight" : "500",
+                "color" : "rgba(1, 1, 1, 0)"
+              },
+              "titleFont" : {
+                "family" : "Material Icons",
+                "size" : 80,
+                "style" : "normal",
+                "weight" : "500",
+                "color" : "#010101"
+              },
+              "unitsFont" : {
+                "family" : "RobotoDraft",
+                "size" : 28,
+                "style" : "normal",
+                "weight" : "500",
+                "color" : "#616161"
+              },
+              "valueFont" : {
+                "size" : 32,
+                "style" : "normal",
+                "weight" : "normal",
+                "shadowColor" : "rgba(0, 0, 0, 0.49)",
+                "color" : "rgba(1, 1, 1, 0.47)",
+                "family" : "Segment7Standard"
+              },
+              "colorValueBoxRect" : "#888",
+              "colorValueBoxRectEnd" : "#666",
+              "colorValueBoxBackground" : "#babab2",
+              "colorValueBoxShadow" : "rgba(0,0,0,1)",
+              "ticksAngle" : 120,
+              "unitTitle" : "local_gas_station"
+            },
+            "title" : "Bus A Fuel",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "mobileHeight" : 4,
+            "units" : "FUEL",
+            "decimals" : 0,
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "enableDataExport" : false,
+            "widgetStyle" : { }
+          },
+          "row" : 16,
+          "col" : 0,
+          "id" : "ddd8ce66-4703-eccf-29d4-abb313654853",
+          "typeFullFqn" : "system.analogue_gauges.speed_gauge_canvas_gauges"
+        },
+        "67d92bc4-17e7-8b7b-b00d-9edd2d53ed3a" : {
+          "type" : "timeseries",
+          "sizeX" : 10,
+          "sizeY" : 6.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "302cf6c2-0d32-95ff-63f3-1bfa43b3b75e",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "latitude",
+                "type" : "timeseries",
+                "label" : "latitude",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.06793773041319717
+              }, {
+                "name" : "longitude",
+                "type" : "timeseries",
+                "label" : "longitude",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.8871338336221102
+              }, {
+                "name" : "fuel",
+                "type" : "timeseries",
+                "label" : "fuel",
+                "color" : "#f44336",
+                "settings" : { },
+                "_hash" : 0.2694884196428573
+              }, {
+                "name" : "speed",
+                "type" : "timeseries",
+                "label" : "speed",
+                "color" : "#ffc107",
+                "settings" : { },
+                "_hash" : 0.06663986617262241
+              }, {
+                "name" : "status",
+                "type" : "timeseries",
+                "label" : "status",
+                "color" : "#607d8b",
+                "settings" : { },
+                "_hash" : 0.3258434564780752
+              } ]
+            } ],
+            "timewindow" : {
+              "hideInterval" : false,
+              "hideAggregation" : false,
+              "hideAggInterval" : false,
+              "selectedTab" : 1,
+              "history" : {
+                "historyType" : 0,
+                "timewindowMs" : 86400000,
+                "interval" : 1000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1611238039849,
+                  "endTimeMs" : 1611324439849
+                }
+              },
+              "aggregation" : {
+                "type" : "NONE",
+                "limit" : 5000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "mapProvider" : "CartoDB.Positron",
+              "latKeyName" : "latitude",
+              "lngKeyName" : "longitude",
+              "showLabel" : true,
+              "label" : "${entityName}",
+              "showTooltip" : true,
+              "tooltipColor" : "#fff",
+              "tooltipFontColor" : "#000000",
+              "tooltipOpacity" : 1,
+              "strokeWeight" : 2,
+              "strokeOpacity" : 1,
+              "pointSize" : 10,
+              "markerImageSize" : 34,
+              "rotationAngle" : 180,
+              "provider" : "openstreet-map",
+              "normalizationStep" : 1000,
+              "decoratorSymbol" : "arrowHead",
+              "decoratorSymbolSize" : 10,
+              "decoratorCustomColor" : "#000",
+              "decoratorOffset" : "20px",
+              "endDecoratorOffset" : "20px",
+              "decoratorRepeat" : "20px",
+              "polygonTooltipPattern" : "<b>${entityName}</b><br/><br/><b>TimeStamp:</b> ${ts:7}",
+              "polygonOpacity" : 0.5,
+              "polygonStrokeOpacity" : 1,
+              "polygonStrokeWeight" : 1,
+              "pointTooltipOnRightPanel" : true,
+              "autocloseTooltip" : true,
+              "tooltipPattern" : "<b>${entityName}</b><br/><br/><b>Latitude:</b> ${latitude:7}<br/><b>Longitude:</b> ${longitude:7}<br/><b>Speed:</b> ${speed:0} MPH<br/><b>Fuel level:</b> ${fuel:0} %<br/><b>Status:</b> ${status}"
+            },
+            "title" : "Route history",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 600,
+              "color" : "rgba(0,0,0,.47)"
+            },
+            "widgetStyle" : { },
+            "useDashboardTimewindow" : false,
+            "showLegend" : false,
+            "actions" : { },
+            "legendConfig" : {
+              "position" : "bottom",
+              "showMin" : false,
+              "showMax" : false,
+              "showAvg" : false,
+              "showTotal" : false
+            },
+            "displayTimewindow" : true,
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "enableDataExport" : true
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "67d92bc4-17e7-8b7b-b00d-9edd2d53ed3a",
+          "typeFullFqn" : "system.maps_v2.test"
+        },
+        "92e38733-9e2e-f558-63ac-8f4637a769e3" : {
+          "type" : "timeseries",
+          "sizeX" : 10,
+          "sizeY" : 6.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "302cf6c2-0d32-95ff-63f3-1bfa43b3b75e",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "latitude",
+                "type" : "timeseries",
+                "label" : "latitude",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.06793773041319717
+              }, {
+                "name" : "longitude",
+                "type" : "timeseries",
+                "label" : "longitude",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.8871338336221102
+              }, {
+                "name" : "fuel",
+                "type" : "timeseries",
+                "label" : "fuel",
+                "color" : "#f44336",
+                "settings" : { },
+                "_hash" : 0.2694884196428573
+              }, {
+                "name" : "speed",
+                "type" : "timeseries",
+                "label" : "speed",
+                "color" : "#ffc107",
+                "settings" : { },
+                "_hash" : 0.06663986617262241
+              }, {
+                "name" : "status",
+                "type" : "timeseries",
+                "label" : "status",
+                "color" : "#607d8b",
+                "settings" : { },
+                "_hash" : 0.3258434564780752
+              } ]
+            } ],
+            "timewindow" : {
+              "hideInterval" : false,
+              "hideAggregation" : false,
+              "hideAggInterval" : false,
+              "selectedTab" : 1,
+              "history" : {
+                "historyType" : 0,
+                "timewindowMs" : 86400000,
+                "interval" : 1000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1611238121343,
+                  "endTimeMs" : 1611324521343
+                }
+              },
+              "aggregation" : {
+                "type" : "NONE",
+                "limit" : 5000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "mapProvider" : "CartoDB.Positron",
+              "latKeyName" : "latitude",
+              "lngKeyName" : "longitude",
+              "showLabel" : false,
+              "label" : "${entityName}",
+              "showTooltip" : true,
+              "tooltipColor" : "#fff",
+              "tooltipFontColor" : "#000000",
+              "tooltipOpacity" : 1,
+              "strokeWeight" : 2,
+              "strokeOpacity" : 1,
+              "pointSize" : 10,
+              "markerImageSize" : 34,
+              "rotationAngle" : 180,
+              "provider" : "openstreet-map",
+              "normalizationStep" : 1000,
+              "decoratorSymbol" : "arrowHead",
+              "decoratorSymbolSize" : 10,
+              "decoratorCustomColor" : "#000",
+              "decoratorOffset" : "20px",
+              "endDecoratorOffset" : "20px",
+              "decoratorRepeat" : "20px",
+              "polygonTooltipPattern" : "<b>${entityName}</b><br/><br/><b>TimeStamp:</b> ${ts:7}",
+              "polygonOpacity" : 0.5,
+              "polygonStrokeOpacity" : 1,
+              "polygonStrokeWeight" : 1,
+              "pointTooltipOnRightPanel" : true,
+              "autocloseTooltip" : true,
+              "tooltipPattern" : "<b>${entityName}</b><br/><br/><b>Latitude:</b> ${latitude:7}<br/><b>Longitude:</b> ${longitude:7}<br/><b>Speed:</b> ${speed:0} MPH<br/><b>Fuel level:</b> ${fuel:0} %<br/><b>Status:</b> ${status}"
+            },
+            "title" : "Route history",
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "widgetStyle" : { },
+            "useDashboardTimewindow" : false,
+            "showLegend" : false,
+            "actions" : { },
+            "legendConfig" : {
+              "position" : "bottom",
+              "showMin" : false,
+              "showMax" : false,
+              "showAvg" : false,
+              "showTotal" : false
+            },
+            "displayTimewindow" : true,
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "enableDataExport" : false
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "92e38733-9e2e-f558-63ac-8f4637a769e3",
+          "typeFullFqn" : "system.maps_v2.test"
+        },
+        "0bed6900-059c-85fc-e048-c04866449949" : {
+          "type" : "latest",
+          "sizeX" : 7.5,
+          "sizeY" : 6.5,
+          "config" : {
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 86400000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1693821252514,
+                  "endTimeMs" : 1693907652514
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "NONE",
+                "limit" : 200
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "rgb(255, 255, 255)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "4px",
+            "settings" : {
+              "enableSearch" : true,
+              "displayPagination" : true,
+              "defaultPageSize" : 10,
+              "defaultSortOrder" : "entityName",
+              "displayEntityName" : true,
+              "displayEntityType" : false,
+              "enableSelectColumnDisplay" : true,
+              "entitiesTitle" : "Buses",
+              "entityNameColumnTitle" : "Bus name"
+            },
+            "title" : "Buses",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 600,
+              "color" : "rgba(0,0,0,.47)"
+            },
+            "useDashboardTimewindow" : false,
+            "showLegend" : false,
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "0d54b239-c13d-b9ca-a71d-2e8af860d803",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "status",
+                "type" : "timeseries",
+                "label" : "Status",
+                "color" : "#2196f3",
+                "settings" : {
+                  "columnWidth" : "0px",
+                  "useCellStyleFunction" : false,
+                  "useCellContentFunction" : false
+                },
+                "_hash" : 0.6301208900748851,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "speed",
+                "type" : "timeseries",
+                "label" : "Speed",
+                "color" : "#4caf50",
+                "settings" : {
+                  "columnWidth" : "0px",
+                  "useCellStyleFunction" : false,
+                  "useCellContentFunction" : false
+                },
+                "_hash" : 0.04419334338671943,
+                "units" : "MPH",
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "fuel",
+                "type" : "timeseries",
+                "label" : "Fuel level",
+                "color" : "#f44336",
+                "settings" : {
+                  "columnWidth" : "0px",
+                  "useCellStyleFunction" : false,
+                  "useCellContentFunction" : false
+                },
+                "_hash" : 0.33237135365521864,
+                "units" : "%",
+                "decimals" : 0,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ]
+            } ],
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "enableDataExport" : true,
+            "widgetStyle" : { },
+            "actions" : {
+              "actionCellButton" : [ {
+                "name" : "Route history",
+                "icon" : "show_chart",
+                "type" : "openDashboardState",
+                "targetDashboardStateId" : "route_history",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openInSeparateDialog" : true,
+                "dialogTitle" : "",
+                "dialogHideDashboardToolbar" : true,
+                "dialogWidth" : null,
+                "dialogHeight" : null,
+                "openRightLayout" : false,
+                "id" : "0723b92d-aff3-c93d-7348-e794827d5dfb"
+              }, {
+                "name" : "Bus details",
+                "icon" : "list",
+                "type" : "openDashboardState",
+                "targetDashboardStateId" : "bus_details",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openInSeparateDialog" : false,
+                "dialogTitle" : "",
+                "dialogHideDashboardToolbar" : true,
+                "dialogWidth" : null,
+                "dialogHeight" : null,
+                "openRightLayout" : false,
+                "id" : "a0446eb2-6e99-ba27-2428-c097c756ea71"
+              } ],
+              "rowClick" : [ {
+                "name" : "bus-details",
+                "icon" : "more_horiz",
+                "type" : "openDashboardState",
+                "targetDashboardStateId" : "bus_details",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openInSeparateDialog" : false,
+                "dialogTitle" : "",
+                "dialogHideDashboardToolbar" : true,
+                "dialogWidth" : null,
+                "dialogHeight" : null,
+                "openRightLayout" : false,
+                "id" : "bc275306-b61c-c9e1-d83e-8e332f021865"
+              } ],
+              "rowDoubleClick" : [ ]
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "0bed6900-059c-85fc-e048-c04866449949",
+          "typeFullFqn" : "system.cards.entities_table"
+        },
+        "5b3e5597-e406-2629-8654-d654243a9e86" : {
+          "type" : "alarm",
+          "sizeX" : 10.5,
+          "sizeY" : 6.5,
+          "config" : {
+            "timewindow" : {
+              "realtime" : {
+                "interval" : 1000,
+                "timewindowMs" : 86400000
+              },
+              "aggregation" : {
+                "type" : "NONE",
+                "limit" : 200
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "rgb(255, 255, 255)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "4px",
+            "settings" : {
+              "enableSelection" : true,
+              "enableSearch" : true,
+              "displayDetails" : true,
+              "allowAcknowledgment" : true,
+              "allowClear" : true,
+              "displayPagination" : true,
+              "defaultPageSize" : 10,
+              "defaultSortOrder" : "-createdTime",
+              "enableSelectColumnDisplay" : true,
+              "enableStickyAction" : false,
+              "enableFilter" : true,
+              "alarmsTitle" : "Bus tracking events"
+            },
+            "title" : "Bus tracking events",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 600,
+              "color" : "rgba(0,0,0,.47)"
+            },
+            "useDashboardTimewindow" : false,
+            "showLegend" : false,
+            "alarmSource" : {
+              "type" : "entity",
+              "name" : "alarms",
+              "entityAliasId" : "0d54b239-c13d-b9ca-a71d-2e8af860d803",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "createdTime",
+                "type" : "alarm",
+                "label" : "Time",
+                "color" : "#2196f3",
+                "settings" : {
+                  "columnWidth" : "100px"
+                },
+                "_hash" : 0.5012275733359894,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "originator",
+                "type" : "alarm",
+                "label" : "Bus name",
+                "color" : "#4caf50",
+                "settings" : {
+                  "columnWidth" : "60px"
+                },
+                "_hash" : 0.4697104220443813,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "severity",
+                "type" : "alarm",
+                "label" : "Severity",
+                "color" : "#ffc107",
+                "settings" : {
+                  "columnWidth" : "60px"
+                },
+                "_hash" : 0.9641309527468951,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "type",
+                "type" : "alarm",
+                "label" : "Type",
+                "color" : "#f44336",
+                "settings" : {
+                  "columnWidth" : "10%"
+                },
+                "_hash" : 0.06790875319809353,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "type",
+                "type" : "alarm",
+                "label" : "Message",
+                "color" : "#9c27b0",
+                "settings" : {
+                  "columnWidth" : "20%",
+                  "useCellStyleFunction" : false,
+                  "useCellContentFunction" : true,
+                  "cellContentFunction" : "return alarm.details.data;"
+                },
+                "_hash" : 0.4981550490639399,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "status",
+                "type" : "alarm",
+                "label" : "Status",
+                "color" : "#607d8b",
+                "settings" : {
+                  "columnWidth" : "10%"
+                },
+                "_hash" : 0.6770565858475492,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ]
+            },
+            "alarmsPollingInterval" : 5,
+            "showTitleIcon" : false,
+            "titleIcon" : "more_horiz",
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "widgetStyle" : { },
+            "displayTimewindow" : true,
+            "actions" : { },
+            "datasources" : [ ],
+            "enableDataExport" : true,
+            "alarmFilterConfig" : {
+              "statusList" : [ ],
+              "severityList" : [ ],
+              "typeList" : [ ],
+              "searchPropagatedAlarms" : false
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "5b3e5597-e406-2629-8654-d654243a9e86",
+          "typeFullFqn" : "system.alarm_widgets.alarms_table"
+        },
+        "0f9ee25b-08a4-f16e-d0fe-0f7641af877a" : {
+          "type" : "alarm",
+          "sizeX" : 10.5,
+          "sizeY" : 6.5,
+          "config" : {
+            "timewindow" : {
+              "realtime" : {
+                "interval" : 1000,
+                "timewindowMs" : 86400000
+              },
+              "aggregation" : {
+                "type" : "NONE",
+                "limit" : 200
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "rgb(255, 255, 255)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "4px",
+            "settings" : {
+              "enableSelection" : true,
+              "enableSearch" : true,
+              "displayDetails" : true,
+              "allowAcknowledgment" : true,
+              "allowClear" : true,
+              "displayPagination" : true,
+              "defaultPageSize" : 5,
+              "defaultSortOrder" : "-createdTime",
+              "enableSelectColumnDisplay" : true,
+              "enableStickyAction" : false,
+              "enableFilter" : true,
+              "alarmsTitle" : "Bus tracking events"
+            },
+            "title" : "Bus tracking events",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 600,
+              "color" : "rgba(0,0,0,.47)"
+            },
+            "useDashboardTimewindow" : false,
+            "showLegend" : false,
+            "alarmSource" : {
+              "type" : "entity",
+              "name" : "alarms",
+              "entityAliasId" : "302cf6c2-0d32-95ff-63f3-1bfa43b3b75e",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "createdTime",
+                "type" : "alarm",
+                "label" : "Time",
+                "color" : "#2196f3",
+                "settings" : {
+                  "columnWidth" : "120px"
+                },
+                "_hash" : 0.5012275733359894,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "originator",
+                "type" : "alarm",
+                "label" : "Bus name",
+                "color" : "#4caf50",
+                "settings" : {
+                  "columnWidth" : "60px"
+                },
+                "_hash" : 0.4697104220443813,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "severity",
+                "type" : "alarm",
+                "label" : "Severity",
+                "color" : "#ffc107",
+                "settings" : {
+                  "columnWidth" : "60px"
+                },
+                "_hash" : 0.9641309527468951,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "type",
+                "type" : "alarm",
+                "label" : "Type",
+                "color" : "#f44336",
+                "settings" : {
+                  "columnWidth" : "10%"
+                },
+                "_hash" : 0.06790875319809353,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "type",
+                "type" : "alarm",
+                "label" : "Message",
+                "color" : "#9c27b0",
+                "settings" : {
+                  "columnWidth" : "20%",
+                  "useCellStyleFunction" : false,
+                  "useCellContentFunction" : true,
+                  "cellContentFunction" : "return alarm.details.data;"
+                },
+                "_hash" : 0.4981550490639399,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "status",
+                "type" : "alarm",
+                "label" : "Status",
+                "color" : "#607d8b",
+                "settings" : {
+                  "columnWidth" : "10%"
+                },
+                "_hash" : 0.6770565858475492,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ]
+            },
+            "alarmsPollingInterval" : 5,
+            "showTitleIcon" : false,
+            "titleIcon" : "more_horiz",
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "widgetStyle" : { },
+            "displayTimewindow" : true,
+            "actions" : { },
+            "datasources" : [ ],
+            "enableDataExport" : true,
+            "alarmFilterConfig" : {
+              "statusList" : [ ],
+              "severityList" : [ ],
+              "typeList" : [ ],
+              "searchPropagatedAlarms" : false
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "0f9ee25b-08a4-f16e-d0fe-0f7641af877a",
+          "typeFullFqn" : "system.alarm_widgets.alarms_table"
+        }
+      },
+      "timewindow" : {
+        "hideInterval" : false,
+        "hideAggregation" : false,
+        "hideAggInterval" : false,
+        "selectedTab" : 0,
+        "realtime" : {
+          "timewindowMs" : 86400000,
+          "interval" : 900000
+        },
+        "aggregation" : {
+          "type" : "AVG",
+          "limit" : 200
+        }
+      },
+      "states" : {
+        "default" : {
+          "name" : "Fleet tracking",
+          "root" : true,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "80ccb4c6-14e5-e901-62fb-79fe8e492529" : {
+                  "sizeX" : 25,
+                  "sizeY" : 24,
+                  "row" : 0,
+                  "col" : 25
+                },
+                "0bed6900-059c-85fc-e048-c04866449949" : {
+                  "sizeX" : 25,
+                  "sizeY" : 12,
+                  "row" : 0,
+                  "col" : 0
+                },
+                "5b3e5597-e406-2629-8654-d654243a9e86" : {
+                  "sizeX" : 25,
+                  "sizeY" : 12,
+                  "row" : 12,
+                  "col" : 0
+                }
+              },
+              "gridSettings" : {
+                "backgroundColor" : "rgba(255, 254, 254, 0)",
+                "columns" : 50,
+                "color" : "rgba(0,0,0,0.870588)",
+                "autoFillHeight" : true,
+                "mobileAutoFillHeight" : false,
+                "mobileRowHeight" : 70,
+                "backgroundSizeMode" : "100%",
+                "margin" : 5,
+                "outerMargin" : true
+              }
+            }
+          }
+        },
+        "bus_details" : {
+          "name" : "${entityName}: details",
+          "root" : false,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "7973dcd9-4764-ffd4-4c55-d309b445ac7d" : {
+                  "sizeX" : 11,
+                  "sizeY" : 3,
+                  "mobileOrder" : 3,
+                  "mobileHeight" : 4,
+                  "row" : 0,
+                  "col" : 3
+                },
+                "64326076-c7cc-42c4-8f5a-284bb0c3d134" : {
+                  "sizeX" : 11,
+                  "sizeY" : 3,
+                  "mobileHeight" : 4,
+                  "row" : 3,
+                  "col" : 3
+                },
+                "8f99b7f9-7b9d-846a-176e-4d354f2f8df3" : {
+                  "sizeX" : 3,
+                  "sizeY" : 3,
+                  "mobileHeight" : 4,
+                  "row" : 0,
+                  "col" : 0
+                },
+                "ddd8ce66-4703-eccf-29d4-abb313654853" : {
+                  "sizeX" : 3,
+                  "sizeY" : 3,
+                  "mobileHeight" : 4,
+                  "row" : 3,
+                  "col" : 0
+                },
+                "67d92bc4-17e7-8b7b-b00d-9edd2d53ed3a" : {
+                  "sizeX" : 10,
+                  "sizeY" : 6,
+                  "row" : 0,
+                  "col" : 14
+                },
+                "0f9ee25b-08a4-f16e-d0fe-0f7641af877a" : {
+                  "sizeX" : 24,
+                  "sizeY" : 6,
+                  "row" : 6,
+                  "col" : 0
+                }
+              },
+              "gridSettings" : {
+                "backgroundColor" : "#eeeeee",
+                "color" : "rgba(0,0,0,0.870588)",
+                "columns" : 24,
+                "margin" : 10,
+                "backgroundSizeMode" : "100%",
+                "autoFillHeight" : true,
+                "backgroundImageUrl" : null,
+                "mobileAutoFillHeight" : false,
+                "mobileRowHeight" : 70,
+                "outerMargin" : true
+              }
+            }
+          }
+        },
+        "route_history" : {
+          "name" : "${entityName}: route history",
+          "root" : false,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "92e38733-9e2e-f558-63ac-8f4637a769e3" : {
+                  "sizeX" : 24,
+                  "sizeY" : 11,
+                  "row" : 0,
+                  "col" : 0
+                }
+              },
+              "gridSettings" : {
+                "backgroundColor" : "#eeeeee",
+                "color" : "rgba(0,0,0,0.870588)",
+                "columns" : 24,
+                "margin" : 0,
+                "backgroundSizeMode" : "100%",
+                "autoFillHeight" : true,
+                "backgroundImageUrl" : null,
+                "mobileAutoFillHeight" : true,
+                "mobileRowHeight" : 70,
+                "outerMargin" : true
+              }
+            }
+          }
+        }
+      },
+      "entityAliases" : {
+        "0d54b239-c13d-b9ca-a71d-2e8af860d803" : {
+          "id" : "0d54b239-c13d-b9ca-a71d-2e8af860d803",
+          "alias" : "Buses",
+          "filter" : {
+            "type" : "deviceType",
+            "resolveMultiple" : true,
+            "deviceNameFilter" : "",
+            "deviceTypes" : [ "bus" ]
+          }
+        },
+        "302cf6c2-0d32-95ff-63f3-1bfa43b3b75e" : {
+          "id" : "302cf6c2-0d32-95ff-63f3-1bfa43b3b75e",
+          "alias" : "Current Bus",
+          "filter" : {
+            "type" : "stateEntity",
+            "resolveMultiple" : false,
+            "stateEntityParamName" : null,
+            "defaultStateEntity" : null
+          }
+        }
+      },
+      "settings" : {
+        "stateControllerId" : "entity",
+        "showTitle" : false,
+        "showDashboardsSelect" : true,
+        "showEntitiesSelect" : false,
+        "showDashboardTimewindow" : true,
+        "showDashboardExport" : true,
+        "toolbarAlwaysOpen" : true,
+        "titleColor" : "rgba(0,0,0,0.870588)",
+        "showFilters" : true
+      },
+      "filters" : { }
+    },
+    "name" : "Fleet tracking",
+    "resources" : null,
+    "assignedCustomers" : null,
+    "customerId" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "DASHBOARD",
+      "id" : "46ccd430-2a4a-11ef-8137-29c43816a2ec"
+    },
+    "ownerId" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
